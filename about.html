@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>The Bridge School</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico" />
+
+  <!-- CSS here -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swiper Example</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <style>
+    .container {
+      margin-top: 120px;
+      /* Adjust as needed */
+      margin-bottom: 120px;
+      /* Adjust as needed */
+    }
+
+    .section-tittle {
+      margin-bottom: 35px;
+      /* Adjust as needed */
+    }
+
+    .about-caption {
+      margin-bottom: 50px;
+      /* Adjust as needed */
+    }
+
+    .carousel-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 1200px;
+      /* Adjust as needed */
+      width: 100%;
+    }
+
+    .swiper-container {
+      width: 100%;
+      padding-bottom: 40px;
+      padding-left: 30px;
+    }
+
+    .swiper-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 0 0 auto;
+      /* Ensure slides do not shrink or grow */
+    }
+
+    .single-cat {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      /* Adjust as needed */
+      height: 500px;
+      /* Adjust as needed */
+      margin: 10px;
+    }
+
+    .cat-icon {
+      font-size: 50px;
+      color: #e74c3c;
+      /* Adjust color as needed */
+      margin-bottom: 20px;
+    }
+
+    .cat-cap h5 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .cat-cap p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: 80px;
+      /* Ensure width and height are the same */
+      height: 80px;
+      /* Ensure width and height are the same */
+      background: #fff;
+      border-radius: 100%;
+      /* Make them circular */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      color: #a32121;
+      /* Arrow color */
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      background-color: #a32121;
+      color: #fff;
+      /* Arrow color on hover */
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      font-size: 8px;
+      /* Adjust arrow size */
+      color: #a32121;
+      /* Default arrow color */
+      content: "->";
+      /* Arrow content */
+    }
+
+    .swiper-button-prev::after {
+      content: "<-";
+      /* Arrow content */
+    }
+
+    .swiper-button-next:hover::after,
+    .swiper-button-prev:hover::after {
+      color: #fff;
+      /* Arrow color on hover */
+    }
+
+    @media (max-width: 1200px) {
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        width: 60px;
+        height: 60px;
+      }
+
+      .swiper-button-next::after,
+      .swiper-button-prev::after {
+        font-size: 8px;
+      }
+    }
+
+    @media (max-width: 992px) {
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        width: 50px;
+        height: 50px;
+      }
+
+      .swiper-button-next::after,
+      .swiper-button-prev::after {
+        font-size: 8px;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+      }
+
+      .swiper-button-next::after,
+      .swiper-button-prev::after {
+        font-size: 10px;
+      }
+    }
+
+    @media (max-width: 576px) {
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        width: 35px;
+        height: 35px;
+      }
+
+      .swiper-button-next::after,
+      .swiper-button-prev::after {
+        font-size: 8px;
+      }
+    }
+
+    .custom-button-info {
+      background: #a32121;
+      font-family: "Muli", sans-serif;
+      text-transform: capitalize;
+      padding: 27px 44px;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 0px;
+      line-height: 1;
+      /* -moz-user-select: none; */
+      letter-spacing: 1px;
+      line-height: 0;
+      margin-bottom: 0;
+      margin: 10px;
+      cursor: pointer;
+      transition: color 0.4s linear;
+      position: relative;
+      z-index: 1;
+      border: 0;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .custom-button-info:hover {
+      background-color: #881717;
+      /* Optional: changes the button color on hover */
+      color: white;
+    }
+
+    .custom-button {
+      background-color: #a32121;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      margin: 20px auto;
+      display: block;
+      text-align: center;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+      /* Smooth transition for background and color */
+    }
+
+    .custom-button:hover {
+      background-color: #881717;
+      /* Optional: changes the button color on hover */
+    }
+
+    /* CSS for specific carousel slide hover effect */
+    .single-cat:hover .custom-button {
+      background-color: white;
+      color: #a32121;
+    }
+
+    /* Container styles */
+    .col-lg-6,
+    .col-md-12 {
+      position: relative;
+    }
+
+    /* Outer about-img div styles */
+    .about-img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      /* Adjust padding as needed */
+      box-sizing: border-box;
+      /* Ensure padding is included in the element's total width and height */
+    }
+
+    /* Inner about-font-img div styles */
+    .about-font-img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      /* Ensure the image does not overflow the div */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Image styles */
+    .about-font-img img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      /* Maintain aspect ratio */
+      height: auto;
+      /* Maintain aspect ratio */
+      padding: 30px;
+      /* Add padding around the image */
+      box-sizing: border-box;
+      /* Ensure padding is included in the element's total width and height */
+      /* border: 10px ridge red; Add a red border */
+    }
+
+    /* 
+.count-down-area-text{
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 22px;
+  color: white;
+  text-transform: capitalize;
+  display: inline-block; /* Make it behave like a block-level element for centering */
+    /* letter-spacing: 0.05em; */
+    /* text-align: center; Center text within the element */
+    /* width: 100%; Ensure it takes the full width of the parent */
+    /* }  */
+  </style>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="assets/css/slicknav.css" />
+  <link rel="stylesheet" href="assets/css/flaticon.css" />
+  <link rel="stylesheet" href="assets/css/progressbar_barfiller.css" />
+  <link rel="stylesheet" href="assets/css/gijgo.css" />
+  <link rel="stylesheet" href="assets/css/animate.min.css" />
+  <link rel="stylesheet" href="assets/css/animated-headline.css" />
+  <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="assets/css/themify-icons.css" />
+  <link rel="stylesheet" href="assets/css/slick.css" />
+  <link rel="stylesheet" href="assets/css/nice-select.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+  <!-- ? Preloader Start -->
+  <div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+      <div class="preloader-inner position-relative">
+        <div class="preloader-circle"></div>
+        <div class="preloader-img pere-text">
+          <img src="assets/img/logo/loder.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Preloader Start -->
+  <header id="app-header"></header>
+  <script async src="header.js"></script>
+
+  <main>
+    <!--? Hero Start -->
+    <div class="slider-area2">
+      <div class="slider-height2 d-flex align-items-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="hero-cap hero-cap2 pt-20 text-center">
+                <h2>About us</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Hero End -->
+    <!--? Services Area Start -->
+    <div class="service-area section-padding30">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-6 col-lg-7 col-md-10 col-sm-10">
+            <!-- Section Tittle -->
+            <div class="section-tittle text-center mb-80">
+              <span>What we are doing</span>
+              <h2>
+                Committed To Academic Excellence And Holistic Development
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-container" id="carousel">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  <div class="single-cat text-center mb-50">
+                    <div class="cat-icon">
+                      <span class="flaticon-gear"></span>
+                    </div>
+                    <div class="cat-cap">
+                      <h5><a href="services.html">About US</a></h5>
+                      <p>
+                        The Bridge School, Karachi: Affordable education,
+                        expanding enrollment, sustained by fees and donations.
+                      </p>
+                      <button class="custom-button" data-target="OPERATIONS" id="scrollButton">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  <div class="single-cat text-center mb-50">
+                    <div class="cat-icon">
+                      <span class="flaticon-think"></span>
+                    </div>
+                    <div class="cat-cap">
+                      <h5><a href="services.html">Academics</a></h5>
+                      <p>
+                        Cambridge system, regular assessments, parent-teacher
+                        meetings, SMS updates, and computer classes.
+                      </p>
+                      <button class="custom-button" data-target="ACADEMIA" id="scrollButton">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  <div class="single-cat text-center mb-50">
+                    <div class="cat-icon">
+                      <span class="flaticon-null"></span>
+                    </div>
+                    <div class="cat-cap">
+                      <h5><a href="services.html">Extra Curricular</a></h5>
+                      <p>
+                        TBS emphasizes co-curricular activities, international
+                        programs, student projects, and educational trips.
+                      </p>
+                      <button class="custom-button" data-target="EXTRA-CURRICULAR" id="scrollButton">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  <div class="single-cat text-center mb-50">
+                    <div class="cat-icon">
+                      <span class="flaticon-null-1"></span>
+                    </div>
+                    <div class="cat-cap">
+                      <h5><a href="services.html">Teachers</a></h5>
+                      <p>
+                        We invest in teacher training, plans full-time
+                        psychologist, and develops comprehensive data
+                        management software.
+                      </p>
+                      <button class="custom-button" data-target="TEACHERS" id="scrollButton">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  <div class="single-cat text-center mb-50">
+                    <div class="cat-icon">
+                      <span class="flaticon-teacher"></span>
+                    </div>
+                    <div class="cat-cap">
+                      <h5><a href="services.html">Evaluation</a></h5>
+                      <p>
+                        TBS uses Oxford and New Century syllabi, regular
+                        tests, academic calendars, and an SMS truancy alert
+                        system.
+                      </p>
+                      <button class="custom-button" data-target="EVALUATION" id="scrollButton">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Add more slides as needed -->
+              <div class="swiper-slide">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  <div class="single-cat text-center mb-50">
+                    <div class="cat-icon">
+                      <span class="flaticon-null"></span>
+                    </div>
+                    <div class="cat-cap">
+                      <h5><a href="services.html">Society</a></h5>
+                      <p>
+                        TBS offers affordable education, promoting personal
+                        growth, socioeconomic uplift, and societal impact.
+                      </p>
+                      <button class="custom-button" data-target="SOCIETY" id="scrollButton">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+          <!-- Add Navigation -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Services Area End -->
+    <!--? About Law Start-->
+    <section class="about-low-area section-padding2">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-10">
+            <div class="about-caption mb-50" id="OPERATIONS">
+              <!-- Section Tittle -->
+              <div class="section-tittle mb-35">
+                <span>OPERATIONS</span>
+                <h2>Bridging the gap in education</h2>
+              </div>
+              <p>
+                The Bridge School, inaugurated on Feb 05, 2012, in
+                Gulistan-e-Jauher, Karachi, began with 60 students in 2012-13,
+                expanding to 220 in various grades. Classes started on March
+                1, 2012. The school charges a nominal fee of Rs 400/month
+                covering all expenses. This fee ensures commitment, and
+                discounts up to 100% are available for those unable to pay.
+                With a monthly expense of Rs. 180,000 for 203 students,
+                tuition fees cover Rs. 70,000, while the Rs. 110,000 shortfall
+                is met through donations and book sales. The school has 15
+                paid staff members, including trained and experienced
+                teachers. The immediate goal is to enroll 400 students.
+              </p>
+              <!-- <p>Lorem ipvsum dolor sit amext, consectetur adipisicing elit, smod tempor incididunt ut labore et dolore.</p> -->
+            </div>
+            <!-- <a href="about.html" class="btn">About US</a> -->
+            <button class="custom-button-info" data-target="carousel" id="scrollButton">
+              More
+            </button>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <!-- about-img -->
+            <div class="about-img">
+              <div class="about-font-img d-none d-lg-block">
+                <img src="assets/img/gallery/bridge_school.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-12">
+            <!-- about-img -->
+            <div class="about-img">
+              <div class="about-font-img d-none d-lg-block">
+                <img src="assets/img/gallery/help.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-10">
+            <div class="about-caption mb-50">
+              <!-- Section Tittle -->
+              <div class="section-tittle mb-35" id="ACADEMIA">
+                <span>ACADEMIA</span>
+                <h2>Ensuring High Level Of education</h2>
+              </div>
+              <p>
+                TBS follow the Cambridge system with three term-exams and
+                monthly assessments to monitor student and teacher performance
+                closely. After each assessment, we organize parent-teacher
+                meetings for updates and feedback. Our SMS service keeps
+                parents informed about strikes, holidays, exams, attendance,
+                and progress. Strict disciplinary action is taken for
+                unexplained absences exceeding three days. Computer classes
+                for Grades 1 to 4 are integrated into the timetable, and
+                students show great enthusiasm, often staying after school to
+                learn.
+              </p>
+              <!-- <p>Lorem ipvsum dolor sit amext, consectetur adipisicing elit, smod tempor incididunt ut labore et dolore.</p> -->
+            </div>
+            <!-- <a href="about.html" class="btn">About US</a> -->
+            <button class="custom-button-info" data-target="carousel" id="scrollButton">
+              More
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-10">
+            <div class="about-caption mb-50">
+              <!-- Section Tittle -->
+              <div class="section-tittle mb-35" id="EXTRA-CURRICULAR">
+                <span>EXTRA-CURRICULAR ACTIVITIES</span>
+                <h2>To help fostering growth apart from academics</h2>
+              </div>
+              <p>
+                TBS prioritizes co-curricular activities, subscribing to
+                international educational organizations and programs like the
+                Maker Movement and Best of Parenting. The Maker Movement
+                provides technical support for student projects, including
+                activities like painting, planting, cleaning, cooking, and
+                more. TBS frequently organizes Friday activities, such as
+                celebrating national and international days and arranging
+                visits to historical and picnic places to inspire children.
+              </p>
+              <!-- <p>Lorem ipvsum dolor sit amext, consectetur adipisicing elit, smod tempor incididunt ut labore et dolore.</p> -->
+            </div>
+            <!-- <a href="about.html" class="btn">About US</a> -->
+            <button class="custom-button-info" data-target="carousel" id="scrollButton">
+              More
+            </button>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <!-- about-img -->
+            <div class="about-img">
+              <div class="about-font-img d-none d-lg-block">
+                <img src="assets/img/gallery/cross_1.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-12">
+            <!-- about-img -->
+            <div class="about-img">
+              <div class="about-font-img d-none d-lg-block">
+                <img src="assets/img/gallery/teachers.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-10">
+            <div class="about-caption mb-50">
+              <!-- Section Tittle -->
+              <div class="section-tittle mb-35" id="TEACHERS">
+                <span>TEACHERS</span>
+                <h2>
+                  To effectively communicate the concepts to the students
+                </h2>
+              </div>
+              <p>
+                Every six months, TBS sponsors two teachers for a diploma
+                course in the Montessori Method at the American Montessori
+                Institute. T hese teachers integrate new concepts into their
+                daily teaching, contributing to the success of quality
+                education. In-house training sessions are conducted twice a
+                week for junior teachers, fostering their growth in modern
+                teaching methods. To enhance student well-being, a full-time
+                psychologist will be hired to assess each child, addressing
+                attendance issues for 3 to 4-year-olds. Additionally, TBS
+                plans to develop user-friendly computer software for
+                comprehensive data management, covering attendance,
+                performance, timetables, results, personal information,
+                accounts, and activities.
+              </p>
+              <!-- <p>Lorem ipvsum dolor sit amext, consectetur adipisicing elit, smod tempor incididunt ut labore et dolore.</p> -->
+            </div>
+            <!-- <a href="about.html" class="btn">About US</a> -->
+            <button class="custom-button-info" data-target="carousel" id="scrollButton">
+              More
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-10">
+            <div class="about-caption mb-50">
+              <!-- Section Tittle -->
+              <div class="section-tittle mb-35" id="SOCIETY">
+                <span>SOCIETY</span>
+                <h2>To alleviate the financial strain of education</h2>
+              </div>
+              <p>
+                TBS alleviates the financial strain of education, offering
+                children the opportunity for personal and academic growth. By
+                instilling knowledge, we aim to open doors to employment,
+                enabling them to elevate their socioeconomic status. Our
+                broader goal is to raise awareness about education in Karachi
+                and surrounding areas, striving for improved living standards.
+                TBS focuses on transforming students into well-mannered
+                individuals, creating a ripple effect that influences parents,
+                families, friends, and society at large. This ongoing process
+                not only provides quality education but also inspires students
+                to envision positive changes in their environment and society.
+              </p>
+              <!-- <p>Lorem ipvsum dolor sit amext, consectetur adipisicing elit, smod tempor incididunt ut labore et dolore.</p> -->
+            </div>
+            <!-- <a href="about.html" class="btn">About US</a> -->
+            <button class="custom-button-info" data-target="carousel" id="scrollButton">
+              More
+            </button>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <!-- about-img -->
+            <div class="about-img">
+              <div class="about-font-img d-none d-lg-block">
+                <img src="assets/img/gallery/social.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-12">
+            <!-- about-img -->
+            <div class="about-img">
+              <div class="about-font-img d-none d-lg-block">
+                <img src="assets/img/gallery/ptm.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-10">
+            <div class="about-caption mb-50" id="EVALUATION">
+              <!-- Section Tittle -->
+              <div class="section-tittle mb-35">
+                <span>MONITORING & EVALUATION</span>
+                <h2>Ensuring transparency in the Child</h2>
+              </div>
+              <p>
+                We implement a comprehensive monitoring and evaluation plan
+                for both students and teachers, utilizing syllabi from Oxford
+                University Press and New Century, including teaching materials
+                and evaluation plans provided by them. Regular surprise tests
+                gauge students’ understanding, providing an accurate picture
+                of subject comprehension. Our internal monitoring system,
+                aligned with printed academic calendars, ensures adherence to
+                schedules. These calendars, distributed to students and staff,
+                outline daily activities, important celebrations, holidays,
+                and assessment dates. Additionally, our SMS service helps
+                combat truancy by notifying parents if a student misses three
+                consecutive days of school.
+              </p>
+              <!-- <p>Lorem ipvsum dolor sit amext, consectetur adipisicing elit, smod tempor incididunt ut labore et dolore.</p> -->
+            </div>
+            <!-- <a href="about.html" class="btn">About US</a> -->
+            <button class="custom-button-info" data-target="carousel" id="scrollButton">
+              More
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Law End-->
+    <!-- Want To work -->
+    <section class="wantToWork-area">
+      <div class="container">
+        <div class="wants-wrapper w-padding2 section-bg" data-background="assets/img/gallery/section_bg01_new.png">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-xl-5 col-lg-9 col-md-8">
+              <div class="wantToWork-caption wantToWork-caption2">
+                <h2>Lets be a part of the great cause</h2>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4">
+              <a href="#" class="btn white-btn f-right sm-left">Become A Volunteer</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Want To work End -->
+    <!--? Testimonial Start -->
+
+    <!-- Testimonial End -->
+
+    <!--? Count Down Start -->
+    <section class="count-down-area">
+      <div class="count-down-area pt-25 section-bg" data-background="assets/img/gallery/section_bg02_new.png">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-12 col-md-12">
+              <div class="count-down-wrapper">
+                <div class="row justify-content-between">
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <!-- Counter Up -->
+                    <div class="single-counter text-center">
+                      <span class="counter color-green">235</span>
+                      <span class="plus">+</span>
+                      <p class="color-green">Total Population (Millions)</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <!-- Counter Up -->
+                    <div class="single-counter text-center">
+                      <span class="counter color-green">40</span>
+                      <span class="plus">+</span>
+                      <p class="color-green">Illiteracy rate (%)</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <!-- Counter Up -->
+                    <div class="single-counter text-center">
+                      <span class="counter color-green">62</span>
+                      <span class="plus">+</span>
+                      <p class="color-green">Rural (%)</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <!-- Counter Up -->
+                    <div class="single-counter text-center">
+                      <span class="counter color-green">22.8</span>
+                      <span class="plus">+</span>
+                      <p class="color-green">
+                        Children who don't have access to school (Millions)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Count Down End -->
+  </main>
+  <footer id="app-footer"></footer>
+  <script async src="footer.js"></script>
+
+  <!-- Scroll Up -->
+  <div id="back-top">
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+  </div>
+
+  <!-- JS here -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var swiper = new Swiper(".swiper-container", {
+        loop: true,
+        slidesPerView: 3,
+        slidesPerGroup: 1,
+        spaceBetween: 5, // Adjust space between slides
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+
+      // Function to update slidesPerView based on screen width
+      function updateSlidesPerView() {
+        if (window.innerWidth < 768) {
+          swiper.params.slidesPerView = 1;
+        } else if (window.innerWidth < 992) {
+          swiper.params.slidesPerView = 2;
+        } else {
+          swiper.params.slidesPerView = 3;
+        }
+        swiper.update();
+      }
+
+      // Initial check
+      updateSlidesPerView();
+
+      // Add event listener to resize event
+      window.addEventListener("resize", function () {
+        updateSlidesPerView();
+      });
+
+      // Automatically swipe right every 3 seconds
+      setInterval(function () {
+        swiper.slideNext();
+      }, 3000); // 3000 milliseconds = 3 seconds
+    });
+  </script>
+  <!-- for scrolling to the relevant place after pressing the button in the relevant carousal -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var buttons = document.querySelectorAll(
+        ".custom-button, .custom-button-info"
+      );
+      var offset = 120; // Change this value to adjust the space above the target element
+
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          var targetId = button.getAttribute("data-target");
+          if (targetId) {
+            var target = document.getElementById(targetId);
+            if (target) {
+              var targetPosition =
+                target.getBoundingClientRect().top + window.scrollY;
+              var offsetPosition = targetPosition - offset;
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+            } else {
+              console.error("No element found with ID:", targetId);
+            }
+          } else {
+            console.error("No data-target attribute found on button.");
+          }
+        });
+      });
+    });
+  </script>
+  <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+  <!-- Jquery, Popper, Bootstrap -->
+  <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+  <script src="./assets/js/popper.min.js"></script>
+  <script src="./assets/js/bootstrap.min.js"></script>
+  <!-- Jquery Mobile Menu -->
+  <script src="./assets/js/jquery.slicknav.min.js"></script>
+
+  <!-- Jquery Slick , Owl-Carousel Plugins -->
+  <script src="./assets/js/owl.carousel.min.js"></script>
+  <script src="./assets/js/slick.min.js"></script>
+  <!-- One Page, Animated-HeadLin -->
+  <script src="./assets/js/wow.min.js"></script>
+  <script src="./assets/js/animated.headline.js"></script>
+  <script src="./assets/js/jquery.magnific-popup.js"></script>
+
+  <!-- Date Picker -->
+  <script src="./assets/js/gijgo.min.js"></script>
+  <!-- Nice-select, sticky -->
+  <script src="./assets/js/jquery.nice-select.min.js"></script>
+  <script src="./assets/js/jquery.sticky.js"></script>
+  <!-- Progress -->
+  <script src="./assets/js/jquery.barfiller.js"></script>
+
+  <!-- counter , waypoint,Hover Direction -->
+  <script src="./assets/js/jquery.counterup.min.js"></script>
+  <script src="./assets/js/waypoints.min.js"></script>
+  <script src="./assets/js/jquery.countdown.min.js"></script>
+  <script src="./assets/js/hover-direction-snake.min.js"></script>
+
+  <!-- contact js -->
+  <script src="./assets/js/contact.js"></script>
+  <script src="./assets/js/jquery.form.js"></script>
+  <script src="./assets/js/jquery.validate.min.js"></script>
+  <script src="./assets/js/mail-script.js"></script>
+  <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+
+  <!-- Jquery Plugins, main Jquery -->
+  <script src="./assets/js/plugins.js"></script>
+  <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
