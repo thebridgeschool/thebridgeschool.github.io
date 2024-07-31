@@ -139,7 +139,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea class="form-control w-100" name="entry.1545476722" id="Message" cols="30"
+                                    <textarea class="form-control w-100" name="entry.414915058" id="Message" cols="30"
                                         rows="9" onfocus="this.placeholder = ''"
                                         onblur="this.placeholder = 'Enter Message'"
                                         placeholder=" Enter Message"></textarea>
@@ -147,21 +147,21 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control valid" name="entry.974243257" id="Name" type="text"
+                                    <input class="form-control valid" name="entry.1210138634" id="Name" type="text"
                                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'"
                                         placeholder="Enter your name">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control valid" name="entry.1523824720" id="Email" type="email"
+                                    <input class="form-control valid" name="entry.1904101274" id="Email" type="email"
                                         onfocus="this.placeholder = ''"
                                         onblur="this.placeholder = 'Enter email address'" placeholder="Email">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <input class="form-control" name="entry.1534583500" id="Subject" type="text"
+                                    <input class="form-control" name="entry.1418840969" id="Subject" type="text"
                                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'"
                                         placeholder="Enter Subject">
                                 </div>
@@ -341,14 +341,14 @@
         var field4 = $("#Subject").val();
 
         $.ajax({
-            url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSf04l4odT4SRI0uAGxL8w-o9A445D_KJrjaHZgMoUiN298YjQ/formResponse",
+            url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLScWCoW52i59h8XX7QrLpxOYJzfxxPQOWQPsMuooOx1Se6bx0g/formResponse",
 
             //add your google form generated numbers below which are also the 'names' of your inputs     
             data: {
-                "entry.1545476722": field1,
-                "entry.974243257": field2,
-                "entry.1523824720": field3,
-                "entry.1534583500": field4
+                "entry.414915058": field1,
+                "entry.1210138634": field2,
+                "entry.1904101274": field3,
+                "entry.1418840969": field4
             },
             type: "POST",
             dataType: "xml",
