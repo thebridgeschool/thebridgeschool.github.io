@@ -1,0 +1,99 @@
+import pandas as pd
+from prophet import Prophet
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Load and preprocess the data
+dataset = pd.read_csv("admin_data.csv")
+print("Initial dataset loaded:")
+print(dataset.head())
+
+# Correct the date format to match the actual format in the dataset
+dataset['Date'] = pd.to_datetime(dataset['Date'], format='%Y-%m-%d', errors='coerce')
+print("\nDataset after converting Date to datetime:")
+print(dataset.head())
+
+dataset = dataset.dropna(subset=['Date'])
+print("\nDataset after dropping rows with NaN Date:")
+print(dataset.head())
+
+# Convert 'Net Sale Cartons' column to numeric values
+dataset['Net Sale Cartons'] = pd.to_numeric(dataset['Net Sale Cartons'], errors='coerce')
+print("\nDataset after converting 'Net Sale Cartons' to numeric:")
+print(dataset.head())
+
+# Convert negative values to positive
+dataset['Net Sale Cartons'] = dataset['Net Sale Cartons'].abs()
+print("\nDataset after converting negative values to positive:")
+print(dataset.head())
+
+# Apply a simple moving average with a window size of 7 days
+dataset['Net Sale Cartons'] = dataset['Net Sale Cartons'].rolling(window=7, center=True).mean()
+print("\nDataset after applying moving average:")
+print(dataset.head(10))
+
+dataset = dataset.groupby(['Date', 'TERRITORY', 'Category', 'SKU_CODE']).sum()
+dataset = dataset.asfreq('D')
+dataset = dataset.interpolate(method='time')
+print("\nDataset after grouping, resampling, and interpolating:")
+print(dataset.head(10))
+
+# Check for NaN values and handle them
+dataset = dataset.dropna()
+print(f"\nDataset shape after dropping NaN values: {dataset.shape}")
+print(dataset.head(10))
+
+# Prepare data for Prophet
+df_prophet = dataset.reset_index().rename(columns={'Date': 'ds', 'Net Sale Cartons': 'y'})
+print("\nData prepared for Prophet model:")
+print(df_prophet.head())
+
+def train_and_predict(month, year):
+    # Split into train and test sets
+    split_date_train_start = '2021-01-01'
+
+    if year < 2024:
+        split_date_train_end = f'{year}-{month:02d}-01'
+    else:
+        split_date_train_end = '2024-06-11'
+
+    df_train = df_prophet[(df_prophet['ds'] >= split_date_train_start) & (df_prophet['ds'] < split_date_train_end)]
+    print(f"\nTraining data shape: {df_train.shape}")
+    print(df_train.head())
+
+    # Ensure there are enough data points
+    if df_train.shape[0] < 2:
+        raise ValueError('Not enough data points to train the model.')
+
+    # Define the display period to be 6 months from the specified month
+    start_date = pd.to_datetime(f'{year}-{month:02d}-01')
+    end_date = start_date + pd.DateOffset(months=6)
+
+    # Fit the Prophet model with additional parameters
+    model = Prophet(weekly_seasonality=True, daily_seasonality=True, seasonality_mode='multiplicative', seasonality_prior_scale=0.5, changepoint_prior_scale=0.4)
+    model.add_seasonality(name='monthly', period=365.25/12, fourier_order=100)  # Add monthly seasonality
+    model.fit(df_train)
+    print("Model fitting successful.")
+
+    # Create a DataFrame for future dates (365 days for next whole year)
+    future_dates = model.make_future_dataframe(periods=365)
+    forecast = model.predict(future_dates)
+    print("Future dates and forecast generated.")
+
+    # Filter the forecast data for the specified 6-month period
+    forecast_filtered = forecast[(forecast['ds'] >= start_date) & (forecast['ds'] < end_date)]
+
+    # Plot predictions and actual data if available
+    plt.figure(figsize=(16, 5))
+    plt.plot(forecast_filtered['ds'], forecast_filtered['yhat'], color='green', label=f'{year} Predictions')
+    plt.fill_between(forecast_filtered['ds'], forecast_filtered['yhat_lower'], forecast_filtered['yhat_upper'], color='green', alpha=0.3, label='Confidence Interval')
+    plt.ylabel('Net Sale Cartons')
+    plt.xlabel('Delivery Date')
+    plt.xticks(rotation=45)
+    plt.title(f"Prophet Predictions for Sales Data starting {month}/{year}")
+    plt.legend()
+
+    plt.show()
+
+# Train and predict for the specified month and year
+train_and_predict(6, 2024)
