@@ -36,6 +36,7 @@
     .carousel-wrapper {
       display: flex;
       justify-content: center;
+      overflow-x: hidden;
       width: 100%;
     }
 
@@ -53,16 +54,21 @@
     }
 
     .swiper-wrapper {
-      display: flex;
+      display: flex !important;
       justify-content: space-between;
     }
 
     .swiper-slide {
-      display: flex;
+      display: flex !important;
       justify-content: center;
       align-items: center;
       flex: 0 0 auto;
       /* Ensure slides do not shrink or grow */
+    }
+
+    .swiper-card
+    {
+      width: fit-content !important;
     }
 
     .single-cat {
@@ -169,6 +175,13 @@
     }
 
     @media (max-width: 768px) {
+
+      .swiper-card
+    {
+      width: fit-content !important;
+      flex: 0 0 50% !important;
+      max-width: 100% !important;
+    }
 
       .swiper-button-next,
       .swiper-button-prev {
@@ -371,8 +384,8 @@
         <div class="row justify-content-center">
           <div class="col-xl-6 col-lg-7 col-md-10 col-sm-10">
             <!-- Section Tittle -->
-            <div class="section-tittle text-center mb-80">
-              <span>What we are doing</span>
+            <div class="amrood section-tittle text-center mb-80">
+              <span class="what-we-are-doing">What we are doing</span>
               <h2>
                 Committed To Academic Excellence And Holistic Development
               </h2>
@@ -383,7 +396,7 @@
           <div class="swiper-container">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="swiper-card col-lg-4 col-md-6 col-sm-6">
                   <div class="single-cat text-center mb-50">
                     <div class="cat-icon">
                       <span class="flaticon-gear"></span>
@@ -402,7 +415,7 @@
                 </div>
               </div>
               <div class="swiper-slide">
-                <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="swiper-card col-lg-4 col-md-6 col-sm-6">
                   <div class="single-cat text-center mb-50">
                     <div class="cat-icon">
                       <span class="flaticon-think"></span>
@@ -421,7 +434,7 @@
                 </div>
               </div>
               <div class="swiper-slide">
-                <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="swiper-card col-lg-4 col-md-6 col-sm-6">
                   <div class="single-cat text-center mb-50">
                     <div class="cat-icon">
                       <span class="flaticon-null"></span>
@@ -440,7 +453,7 @@
                 </div>
               </div>
               <div class="swiper-slide">
-                <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="swiper-card col-lg-4 col-md-6 col-sm-6">
                   <div class="single-cat text-center mb-50">
                     <div class="cat-icon">
                       <span class="flaticon-null-1"></span>
@@ -460,7 +473,7 @@
                 </div>
               </div>
               <div class="swiper-slide">
-                <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="swiper-card col-lg-4 col-md-6 col-sm-6">
                   <div class="single-cat text-center mb-50">
                     <div class="cat-icon">
                       <span class="flaticon-teacher"></span>
@@ -481,7 +494,7 @@
               </div>
               <!-- Add more slides as needed -->
               <div class="swiper-slide">
-                <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="swiper-card col-lg-4 col-md-6 col-sm-6">
                   <div class="single-cat text-center mb-50">
                     <div class="cat-icon">
                       <span class="flaticon-null"></span>
@@ -504,8 +517,8 @@
           <!-- Add Pagination -->
           <div class="swiper-pagination"></div>
           <!-- Add Navigation -->
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
+          <!-- <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div> -->
         </div>
       </div>
     </div>
@@ -781,7 +794,7 @@
             <div class="col-lg-12 col-md-12">
               <div class="count-down-wrapper">
                 <div class="row justify-content-between">
-                  <div class="col-lg-3 col-md-6 col-sm-6">
+                  <div class="col-lg-3 col-md-6 col-sm-1">
                     <!-- Counter Up -->
                     <div class="single-counter text-center">
                       <span class="counter color-green">235</span>
@@ -789,7 +802,7 @@
                       <p class="color-green">Total Population (Millions)</p>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6">
+                  <div class="col-lg-3 col-md-6 col-sm-1">
                     <!-- Counter Up -->
                     <div class="single-counter text-center">
                       <span class="counter color-green">40</span>
@@ -797,7 +810,7 @@
                       <p class="color-green">Illiteracy rate (%)</p>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6">
+                  <div class="col-lg-3 col-md-6 col-sm-1">
                     <!-- Counter Up -->
                     <div class="single-counter text-center">
                       <span class="counter color-green">62</span>
@@ -805,7 +818,7 @@
                       <p class="color-green">Rural (%)</p>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6">
+                  <div class="col-lg-3 col-md-6 col-sm-1">
                     <!-- Counter Up -->
                     <div class="single-counter text-center">
                       <span class="counter color-green">22.8</span>
@@ -839,25 +852,40 @@
       var swiper = new Swiper(".swiper-container", {
         loop: true,
         slidesPerView: 3,
-        slidesPerGroup: 1,
-        spaceBetween: 5, // Adjust space between slides
+        centeredSlides: true,
+        // effect: 'coverflow',
+        // slidesPerGroup: 1,
+        updateOnWindowResize: true,
+      //   ease: 'power4.inOut',
+      //   coverflowEffect: {
+      //       rotate: 0, // Rotate value for the effect (in degrees)
+      //       stretch: 0, // Stretch value for the effect (in pixels)
+      //       depth: 0, // Depth value for the effect (in pixels)
+      //       modifier: 1, // Effect multiplier to control the intensity of the effect
+      //       slideShadows: false, // Enable slide shadows
+      //       scale: 1,
+      // },
+        // spaceBetween: 2, // Adjust space between slides
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
         },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
+        // navigation: {
+        //   nextEl: ".swiper-button-next",
+        //   prevEl: ".swiper-button-prev",
+        // },
       });
 
       // Function to update slidesPerView based on screen width
       function updateSlidesPerView() {
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < 897) {
           swiper.params.slidesPerView = 1;
-        } else if (window.innerWidth < 992) {
+
+        } 
+        else if (window.innerWidth < 992) {
           swiper.params.slidesPerView = 2;
-        } else {
+        } 
+        else {
           swiper.params.slidesPerView = 3;
         }
         swiper.update();

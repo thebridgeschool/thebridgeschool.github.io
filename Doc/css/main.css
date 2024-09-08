@@ -1,3 +1,9 @@
+*
+{
+    box-sizing: border-box;
+}
+
+
 body{
 	background-color:#FFF;
     font-family: "Lato", sans-serif;
@@ -65,9 +71,10 @@ section p {
 .clearfix:after {
     clear: both;
 }
-.clearfix {
+
+/* .clearfix {
     *zoom: 1;
-}
+} */
 
 .tan {
   margin-bottom: 10px;
